@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.120.2",
     "@types/jsbarcode": "^3.11.4",
     "jsbarcode": "^3.11.6",
     "react": "^19.1.0",
