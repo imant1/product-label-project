@@ -14,6 +14,7 @@ export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
     if (canvasRef.current) {
       JsBarcode(canvasRef.current, product.sku, {
         height: 80,
+				fontSize:30,
       });
     }
   }, [product.sku]);
