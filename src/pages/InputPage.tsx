@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import type { Product } from '../types';
 
 export function InputPage() {
   const [input, setInput] = useState('');
