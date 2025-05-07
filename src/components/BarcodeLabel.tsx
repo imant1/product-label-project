@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import JsBarcode from 'jsbarcode';
 import type { Product } from '../types';
 
 interface BarcodeLabelProps {
@@ -7,13 +6,21 @@ interface BarcodeLabelProps {
   index: number;
 }
 
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    JsBarcode: any;
+  }
+}
+
 export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      JsBarcode(canvasRef.current, product.sku, {
+    if (canvasRef.current && window.JsBarcode) {
+      window.JsBarcode(canvasRef.current, product.sku, {
         height: 36,
+        displayValue: false,
       });
     }
   }, [product.sku]);
