@@ -13,7 +13,7 @@ export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
   useEffect(() => {
     if (canvasRef.current) {
       JsBarcode(canvasRef.current, product.sku, {
-        height: 36,
+        height: 80,
       });
     }
   }, [product.sku]);
