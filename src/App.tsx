@@ -62,6 +62,7 @@ function App() {
       <Routes>
         <Route path="/" element={<InputPage />} />
         <Route path="/preview" element={<PreviewPage />} />
+        <Route path="/ping" element={<>aaaaaaaaaaaaaaaa</>} />
       </Routes>
     </BrowserRouter>
   )
