@@ -135,3 +135,7 @@ textarea {
   font-size: 20px;
   margin-bottom: 8px;
 }
+
+.price {
+	font-size: 40px;
+}
