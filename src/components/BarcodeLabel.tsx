@@ -12,7 +12,6 @@ export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 	const { selectedOption} = useOptions();
 
-	console.log( `Rendering barcode for SKU: ${product.sku} with option: ${selectedOption}`);
 
   useEffect(() => {
     if (canvasRef.current) {

@@ -5,6 +5,7 @@ import type {  Product } from './types'
 import { LabelOptions } from './types'
 import './App.css'
 import { useOptions } from './lib/context/options-context'
+import { BarcodeParamsRender } from './components/BarcodeParamsRender'
 
 function InputPage() {
   const [input, setInput] = useState('')
@@ -81,7 +82,8 @@ function App() {
       <Routes>
         <Route path="/" element={<InputPage />} />
         <Route path="/preview" element={<PreviewPage />} />
-        <Route path="/ping" element={<>aaaaaaaaaaaaaaaa</>} />
+        <Route path="/params" element={<BarcodeParamsRender />} />
+
       </Routes>
     </BrowserRouter>
   )
