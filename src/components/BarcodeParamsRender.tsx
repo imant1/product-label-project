@@ -22,15 +22,12 @@ export const BarcodeParamsRender = () => {
     }
   }, [searchParams]);
 
-  const expandedProducts = products.flatMap(product =>
-    Array(product.stock).fill(product)
-  );
 
   return (
     <div className="barcode-container">
-      {expandedProducts.map((product, index) => (
+      {products.map((product, index) => (
         <div key={`${product.sku}-${index}`} className="page">
-          <BarcodeLabel product={product} index={index} />
+          <BarcodeLabel product={product} index={index} withPrice={!!product.price}/>
         </div>
       ))}
     </div>

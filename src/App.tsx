@@ -16,7 +16,7 @@ function InputPage() {
       .split('\n')
       .filter(line => line.trim())
       .map(line => {
-        const [title, variant, sku, stockStr, price] = line.split('\t').map(s => s.trim())
+        const [title, variant, sku, stockStr, price] = line.split(';').map(s => s.trim())
         const stock = stockStr ? parseInt(stockStr, 10) : 1
         return { title, variant, sku, stock, price }
       })
@@ -47,10 +47,11 @@ function InputPage() {
 
 			</div>
       <div className="input-section">
+			<p>Enter product data (one per line, using ; as separator)<br/>
+			<span className='italic'>title; variant; sku; stock{selectedOption === LabelOptions.SELL ? '; price' : ''}</span></p>
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter product data (one per line, using tab as separator): title  variant  sku  stock"
           rows={10}
         />
         <button onClick={handlePreview} className="preview-button">

@@ -6,9 +6,10 @@ import { useOptions } from '../lib/context/options-context';
 interface BarcodeLabelProps {
   product: Product;
   index: number;
+  withPrice?: boolean;
 }
 
-export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
+export const BarcodeLabel = ({ product, index, withPrice }: BarcodeLabelProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 	const { selectedOption} = useOptions();
 
@@ -19,6 +20,16 @@ export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
     }
   }, [product.sku, selectedOption]);
 
+	let formatedPrice = product.price;
+	if (formatedPrice && !Number.isNaN(Number(formatedPrice))) {
+		formatedPrice = Intl.NumberFormat("es-CL", {
+			currency: "CLP",
+			style: "currency",
+			minimumFractionDigits: 0,
+			maximumFractionDigits: 0,
+		}).format(Number(formatedPrice));
+	}
+
   return (
     <div className="barcode-item">
       <div className="product-name">
@@ -26,9 +37,9 @@ export const BarcodeLabel = ({ product, index }: BarcodeLabelProps) => {
       </div>
 
 			{
-				selectedOption === LabelOptions.SELL && (
+				(selectedOption === LabelOptions.SELL || withPrice) && (
 				<div className="price">
-					{product.price}
+					{formatedPrice}
 				</div>
 				)
 			}
